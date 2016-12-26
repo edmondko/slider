@@ -8,12 +8,12 @@ $(document).ready(function() {
 
 });
 
-$(document).on('touchstart mouseover', '.slide', function(event) {
+$(document).on('touchstart', '.slide', function(event) {
   event.preventDefault();
   slider.unslider('stop');
 });
 
-$(document).on('touchend mouseout', '.slide', function(event) {
+$(document).on('touchend', '.slide', function(event) {
   event.preventDefault();
   slider.unslider('start');
 });
