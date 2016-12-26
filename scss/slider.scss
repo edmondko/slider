@@ -1,0 +1,86 @@
+
+@import 'normalize';
+@import 'unslider';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  font-size: 18px;
+  background-color: #E9E9ED;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
+
+.button {
+  display: inline-block;
+  font: 16px 'Roboto', sans-serif;
+  color: #FFF;
+  border: none;
+  text-transform: uppercase;
+  padding: 1em 2em;
+
+  &.positive {
+    background-color: #2ca250;
+  }
+}
+
+#slider {
+  opacity: 0;
+
+  .slide {
+    height: calc(80vh - 2em);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: content-box;
+    background-size: 100% 100%;
+    padding-bottom: 1rem;
+
+    .slide-cnt {
+      position: relative;
+      bottom: -1rem;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: bottom;
+    }
+
+    @for $i from 1 through 3 {
+      &.slide-#{$i} {
+        background-image: url('../images/slide#{$i}-grad.png');
+        .slide-cnt {
+          background-image: url('../images/slide#{$i}-nobg.png');
+        }
+        @media screen and (min-width: 768px) {
+          .slide-cnt {
+            background-image: url('../images/slide#{$i}-nobg-tablet.png');
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .button {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (orientation: landscape) {
+  #slider {
+    .slide {
+      height: calc(80vh - 3em);
+    }
+  }
+  .btn-container {
+    height: 20vh;
+  }
+}
